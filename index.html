@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>จำนวนสิทธิคงเหลือ โครงการเราเที่ยวกันเฟส 4 ส่วนขยาย</title>
+    <title>จำนวนสิทธิคงเหลือ โครงการเราเที่ยวกันเฟส 5</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <style>
@@ -70,11 +70,11 @@
             <span id="remain1" class="remain"></span>
         </div>
         
-        <div id="flight_remain">
+<!--         <div id="flight_remain">
             <span class="material-symbols-outlined icon-desc">airplanemode_active</span>
             <span class="desc ">จำนวนสิทธิตั๋วเครื่องบิน เหลือ: &nbsp; </span> 
             <span id="remain2" class="remain"></span>
-        </div>
+        </div> -->
 
     </div>
         
@@ -87,18 +87,18 @@
             axios
                 .get("https://api-register.xn--12c1bik6bbd8ab6hd1b5jc6jta.com/api/v1/rptg-ext-people-status/limit")
                 .then((response) => {
-                    let remain = document.getElementById("remain1");
+                    const remain = document.getElementById("remain1");
                     remain.innerHTML = response.data.result.limitLeft.toLocaleString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                 })
                 .catch((error) => console.error(error));
 
-            axios
-            .get("https://api-airline.xn--12c1bik6bbd8ab6hd1b5jc6jta.com/balance")
-            .then((response) => {
-                let remain = document.getElementById("remain2");
-                remain.innerHTML = response.data.data.toLocaleString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            })
-            .catch((error) => console.error(error));
+//             axios
+//             .get("https://api-airline.xn--12c1bik6bbd8ab6hd1b5jc6jta.com/balance")
+//             .then((response) => {
+//                 const remain = document.getElementById("remain2");
+//                 remain.innerHTML = response.data.data.toLocaleString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+//             })
+//             .catch((error) => console.error(error));
         };
         setInterval(getRemaining, 500);
     </script>
